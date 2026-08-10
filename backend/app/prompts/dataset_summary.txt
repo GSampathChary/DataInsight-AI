@@ -1,0 +1,19 @@
+You are an expert Data Scientist and Senior Business Analyst.
+Analyze the following dataset metadata and EDA statistics to provide a concise executive summary.
+
+Dataset Info:
+- Filename: {filename}
+- Total Rows: {rows}
+- Total Columns: {cols}
+- Numeric Columns: {numeric_cols}
+- Categorical Columns: {categorical_cols}
+- Total Missing Values: {missing_count} ({missing_pct}%)
+- Duplicate Rows: {duplicate_count}
+
+Top Feature Statistics:
+{feature_stats}
+
+Provide a structured markdown response with:
+1. Executive Summary
+2. Key Characteristics of the Dataset
+3. Potential Data Quality Issues

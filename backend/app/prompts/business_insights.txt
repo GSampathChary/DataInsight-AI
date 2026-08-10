@@ -1,0 +1,14 @@
+You are a Lead Business Intelligence Specialist and Strategic Analyst.
+Based on the following Exploratory Data Analysis summary and statistical distributions:
+
+Dataset Summary:
+- Rows: {rows}, Columns: {cols}
+- Columns List: {columns_list}
+- Correlation Highlights: {correlations}
+- Feature Summaries: {feature_stats}
+
+Identify actionable business insights:
+1. High-Impact Drivers & Key Trends
+2. Critical Data Correlations & Patterns
+3. Potential Risks or Bottlenecks
+4. Strategic Opportunities

@@ -1,0 +1,16 @@
+HouseID,Neighborhood,SquareFeet,Bedrooms,Bathrooms,YearBuilt,GarageCars,DistanceToCityKm,Pool,SalePrice
+H-101,Downtown,1850,3,2.5,2015,2,2.4,Yes,450000
+H-102,Suburbs,2200,4,3.0,2018,2,12.5,No,520000
+H-103,Westside,1400,2,1.5,1998,1,8.1,No,310000
+H-104,Downtown,2600,4,3.5,2021,3,1.2,Yes,680000
+H-105,Suburbs,1950,3,2.0,2005,2,14.0,No,410000
+H-106,Eastside,1650,3,2.0,2010,2,6.3,No,375000
+H-107,Downtown,3100,5,4.0,2022,3,0.8,Yes,890000
+H-108,Westside,1200,2,1.0,1985,1,9.4,No,265000
+H-109,Suburbs,2800,4,3.0,2019,3,15.2,Yes,610000
+H-110,Eastside,2100,3,2.5,2016,2,5.5,No,470000
+H-111,Downtown,1750,3,2.0,2012,2,3.1,No,430000
+H-112,Westside,2400,4,2.5,2017,2,7.8,Yes,540000
+H-113,Suburbs,1550,3,1.5,2000,1,13.8,No,345000
+H-114,Eastside,2900,4,3.5,2020,3,4.9,Yes,670000
+H-115,Downtown,2050,3,2.5,2014,2,2.0,No,495000

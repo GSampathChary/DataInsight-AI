@@ -1,0 +1,16 @@
+CustomerID,Region,ProductCategory,SalesRevenue,UnitsSold,DiscountRate,CustomerSatisfaction,ChurnStatus
+CUST-001,North,Electronics,1250.50,5,0.05,4.5,No
+CUST-002,South,Furniture,850.00,2,0.10,3.2,Yes
+CUST-003,East,Apparel,320.75,8,0.15,4.8,No
+CUST-004,West,Electronics,2100.00,7,0.00,4.0,No
+CUST-005,North,Furniture,450.25,1,0.20,2.5,Yes
+CUST-006,South,Apparel,620.00,4,0.05,4.2,No
+CUST-007,East,Electronics,1800.50,6,0.10,3.8,No
+CUST-008,West,Furniture,1150.00,3,0.12,4.6,No
+CUST-009,North,Apparel,290.00,3,0.00,2.1,Yes
+CUST-010,South,Electronics,3400.00,10,0.08,4.9,No
+CUST-011,East,Furniture,980.50,4,0.15,3.5,Yes
+CUST-012,West,Apparel,510.00,5,0.05,4.1,No
+CUST-013,North,Electronics,1950.00,8,0.10,4.4,No
+CUST-014,South,Furniture,1200.75,5,0.00,3.9,No
+CUST-015,East,Apparel,410.50,3,0.25,2.8,Yes
