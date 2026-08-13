@@ -17,7 +17,7 @@ export const SettingsView: React.FC = () => {
     <div className="space-y-8 max-w-4xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold text-white flex items-center space-x-2">
-          <Settings className="w-6 h-6 text-indigo-400" />
+          <Settings className="w-6 h-6 text-emerald-400" />
           <span>Platform Settings</span>
         </h1>
         <p className="text-slate-400 text-sm">Configure AI Providers, API Keys, and Environment Preferences.</p>
@@ -38,26 +38,26 @@ export const SettingsView: React.FC = () => {
               placeholder="AIzaSy..."
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
-              className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              className="w-full bg-emerald-950/70 border border-emerald-900 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
             />
           </div>
 
           <div className="space-y-2">
             <label className="text-sm font-semibold text-white flex items-center space-x-2">
-              <Database className="w-4 h-4 text-purple-400" />
+              <Database className="w-4 h-4 text-red-400" />
               <span>Default Storage & Database</span>
             </label>
             <input
               type="text"
               disabled
               value="SQLite (datainsight.db)"
-              className="w-full bg-slate-800/50 border border-slate-800 rounded-xl px-4 py-2.5 text-sm text-slate-400 cursor-not-allowed"
+              className="w-full bg-emerald-950/50 border border-emerald-900 rounded-xl px-4 py-2.5 text-sm text-slate-400 cursor-not-allowed"
             />
           </div>
 
           <button
             type="submit"
-            className="flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-all shadow-md shadow-indigo-600/30"
+            className="flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-semibold text-sm transition-all shadow-md shadow-emerald-600/30"
           >
             {saved ? <Check className="w-4 h-4 text-emerald-400" /> : <Settings className="w-4 h-4" />}
             <span>{saved ? 'Settings Saved!' : 'Save Settings'}</span>

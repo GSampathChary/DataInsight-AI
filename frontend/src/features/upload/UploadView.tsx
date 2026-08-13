@@ -64,8 +64,8 @@ export const UploadView: React.FC<UploadViewProps> = ({ onUploadSuccess }) => {
       </div>
 
       {/* Drag & Drop Upload Zone */}
-      <div className="glass-panel rounded-2xl p-8 text-center space-y-4 border-2 border-dashed border-slate-700 hover:border-indigo-500/50 transition-all">
-        <div className="w-16 h-16 rounded-2xl bg-indigo-600/10 flex items-center justify-center mx-auto text-indigo-400">
+      <div className="glass-panel rounded-2xl p-8 text-center space-y-4 border-2 border-dashed border-emerald-900 hover:border-emerald-500/50 transition-all">
+        <div className="w-16 h-16 rounded-2xl bg-emerald-600/10 flex items-center justify-center mx-auto text-emerald-400">
           <UploadCloud className="w-8 h-8" />
         </div>
 
@@ -75,7 +75,7 @@ export const UploadView: React.FC<UploadViewProps> = ({ onUploadSuccess }) => {
         </div>
 
         <div className="pt-2">
-          <label className="cursor-pointer inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm border border-slate-700 transition-colors">
+          <label className="cursor-pointer inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-emerald-950/70 hover:bg-emerald-900/70 text-white font-medium text-sm border border-emerald-900 transition-colors">
             <FileSpreadsheet className="w-4 h-4 text-emerald-400" />
             <span>Browse Computer</span>
             <input 
@@ -88,8 +88,8 @@ export const UploadView: React.FC<UploadViewProps> = ({ onUploadSuccess }) => {
         </div>
 
         {file && (
-          <div className="mt-4 p-3 rounded-xl bg-slate-800/80 border border-slate-700 inline-flex items-center space-x-3 text-sm text-slate-200">
-            <FileSpreadsheet className="w-4 h-4 text-indigo-400" />
+          <div className="mt-4 p-3 rounded-xl bg-emerald-950/70 border border-emerald-900 inline-flex items-center space-x-3 text-sm text-slate-200">
+            <FileSpreadsheet className="w-4 h-4 text-emerald-400" />
             <span className="font-medium">{file.name}</span>
             <span className="text-xs text-slate-400">({(file.size / 1024).toFixed(1)} KB)</span>
           </div>
@@ -107,7 +107,7 @@ export const UploadView: React.FC<UploadViewProps> = ({ onUploadSuccess }) => {
             <button
               onClick={handleUpload}
               disabled={isUploading}
-              className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-all shadow-lg shadow-indigo-600/30"
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-semibold text-sm transition-all shadow-lg shadow-emerald-600/30"
             >
               {isUploading ? (
                 <>

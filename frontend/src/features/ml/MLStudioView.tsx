@@ -66,7 +66,7 @@ export const MLStudioView: React.FC<MLStudioViewProps> = ({ dataset }) => {
     <div className="space-y-8 max-w-5xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold text-white flex items-center space-x-2">
-          <BrainCircuit className="w-6 h-6 text-purple-400" />
+          <BrainCircuit className="w-6 h-6 text-red-400" />
           <span>AutoML Studio & Model Training Pipeline</span>
         </h1>
         <p className="text-slate-400 text-sm">Select target variable, auto-train multiple algorithms, compare performance metrics, and download the trained binary model.</p>
@@ -77,13 +77,13 @@ export const MLStudioView: React.FC<MLStudioViewProps> = ({ dataset }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="space-y-1.5">
             <label className="text-xs font-semibold text-slate-300 flex items-center space-x-1.5">
-              <Target className="w-4 h-4 text-pink-400" />
+              <Target className="w-4 h-4 text-red-400" />
               <span>Select Target Column</span>
             </label>
             <select
               value={targetColumn}
               onChange={(e) => setTargetColumn(e.target.value)}
-              className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-purple-500"
+              className="w-full bg-emerald-950/70 border border-emerald-900 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500"
             >
               {columns.map((c) => (
                 <option key={c} value={c}>{c}</option>
@@ -99,7 +99,7 @@ export const MLStudioView: React.FC<MLStudioViewProps> = ({ dataset }) => {
             <select
               value={taskType}
               onChange={(e) => setTaskType(e.target.value)}
-              className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-purple-500"
+              className="w-full bg-emerald-950/70 border border-emerald-900 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500"
             >
               <option value="auto">Auto-Detect (Classification vs Regression)</option>
               <option value="classification">Classification</option>
@@ -111,7 +111,7 @@ export const MLStudioView: React.FC<MLStudioViewProps> = ({ dataset }) => {
             <button
               onClick={handleTrainModels}
               disabled={isTraining || !targetColumn}
-              className="w-full flex items-center justify-center space-x-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-semibold text-sm transition-all shadow-lg shadow-purple-600/30"
+              className="w-full flex items-center justify-center space-x-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-red-600 hover:from-emerald-500 hover:to-red-500 text-white font-semibold text-sm transition-all shadow-lg shadow-emerald-600/30"
             >
               {isTraining ? (
                 <>
@@ -139,7 +139,7 @@ export const MLStudioView: React.FC<MLStudioViewProps> = ({ dataset }) => {
       {result && (
         <div className="space-y-6">
           {/* Best Model Banner */}
-          <div className="glass-card p-6 rounded-2xl border border-purple-500/30 bg-gradient-to-r from-purple-950/40 via-indigo-950/40 to-slate-900 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="glass-card p-6 rounded-2xl border border-emerald-500/30 bg-gradient-to-r from-emerald-950/40 via-red-950/30 to-slate-900 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="space-y-1">
               <div className="flex items-center space-x-2 text-amber-400 text-xs font-bold uppercase">
                 <Trophy className="w-4 h-4" />
@@ -147,13 +147,13 @@ export const MLStudioView: React.FC<MLStudioViewProps> = ({ dataset }) => {
               </div>
               <h2 className="text-2xl font-extrabold text-white">{result.best_model.model_name}</h2>
               <p className="text-xs text-slate-400">
-                Task Type: <span className="text-purple-300 font-semibold uppercase">{result.task_type}</span> | Target: <span className="text-white font-semibold">{result.target_column}</span>
+                Task Type: <span className="text-red-300 font-semibold uppercase">{result.task_type}</span> | Target: <span className="text-white font-semibold">{result.target_column}</span>
               </p>
             </div>
 
             <button
               onClick={() => handleDownloadModel(result.best_model.model_id)}
-              className="flex items-center space-x-2 px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-sm shadow-lg shadow-emerald-600/30 transition-all"
+              className="flex items-center space-x-2 px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-red-600 hover:from-emerald-500 hover:to-red-500 text-white font-bold text-sm shadow-lg shadow-emerald-600/30 transition-all"
             >
               <Download className="w-5 h-5" />
               <span>Download Model (.joblib)</span>
@@ -187,7 +187,7 @@ export const MLStudioView: React.FC<MLStudioViewProps> = ({ dataset }) => {
                 </thead>
                 <tbody className="divide-y divide-slate-800">
                   {result.all_models_comparison.map((m, idx) => (
-                    <tr key={idx} className={idx === 0 ? 'bg-purple-950/20 font-bold' : 'hover:bg-slate-800/40'}>
+                    <tr key={idx} className={idx === 0 ? 'bg-emerald-950/20 font-bold' : 'hover:bg-slate-800/40'}>
                       <td className="py-3 px-4 font-semibold text-white flex items-center space-x-2">
                         {idx === 0 && <Trophy className="w-3.5 h-3.5 text-amber-400" />}
                         <span>{m.model_name}</span>

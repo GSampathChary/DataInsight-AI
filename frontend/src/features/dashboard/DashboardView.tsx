@@ -3,13 +3,14 @@
 import React from 'react';
 import { 
   FileSpreadsheet, 
-  Layers, 
   BarChart3, 
   Sparkles, 
   BrainCircuit, 
-  Clock, 
   ArrowUpRight,
-  Database
+  Database,
+  Search,
+  ShieldCheck,
+  WifiOff
 } from 'lucide-react';
 import { Dataset } from '@/lib/api';
 
@@ -19,6 +20,9 @@ interface DashboardViewProps {
   onSelectDataset: (d: Dataset) => void;
   onUploadClick: () => void;
   onNavigateTab: (tab: any) => void;
+  backendHealth: 'checking' | 'online' | 'offline';
+  searchQuery: string;
+  onSearchQueryChange: (value: string) => void;
 }
 
 export const DashboardView: React.FC<DashboardViewProps> = ({
@@ -26,8 +30,16 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   activeDataset,
   onSelectDataset,
   onUploadClick,
-  onNavigateTab
+  onNavigateTab,
+  backendHealth,
+  searchQuery,
+  onSearchQueryChange
 }) => {
+  const filteredDatasets = datasets.filter((d) => {
+    const haystack = `${d.filename} ${d.file_type} ${d.rows_count} ${d.cols_count}`.toLowerCase();
+    return haystack.includes(searchQuery.toLowerCase());
+  });
+
   return (
     <div className="space-y-8">
       {/* Top Welcome Header */}
@@ -37,21 +49,34 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <p className="text-slate-400 text-sm">Overview of your workspace, datasets, and recent analytical operations.</p>
         </div>
 
-        <button
-          onClick={onUploadClick}
-          className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm transition-all shadow-md shadow-indigo-600/20"
-        >
-          <FileSpreadsheet className="w-4 h-4" />
-          <span>Upload New Dataset</span>
-        </button>
+        <div className="flex items-center gap-3">
+          <div className={`flex items-center space-x-2 px-3 py-2 rounded-xl border text-xs font-semibold ${
+            backendHealth === 'online'
+              ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20'
+              : backendHealth === 'offline'
+              ? 'bg-red-500/10 text-red-300 border-red-500/20'
+              : 'bg-emerald-950/70 text-slate-300 border-emerald-900'
+          }`}>
+            {backendHealth === 'online' ? <ShieldCheck className="w-4 h-4" /> : <WifiOff className="w-4 h-4" />}
+            <span>{backendHealth === 'online' ? 'Live backend ready' : backendHealth === 'offline' ? 'Backend unavailable' : 'Checking backend'}</span>
+          </div>
+
+          <button
+            onClick={onUploadClick}
+            className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-medium text-sm transition-all shadow-md shadow-emerald-600/20"
+          >
+            <FileSpreadsheet className="w-4 h-4" />
+            <span>Upload New Dataset</span>
+          </button>
+        </div>
       </div>
 
       {/* Overview Stat Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <div className="glass-card p-5 rounded-2xl space-y-2">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-semibold uppercase tracking-wider">Total Datasets</span>
-            <Database className="w-4 h-4 text-indigo-400" />
+            <Database className="w-4 h-4 text-emerald-400" />
           </div>
           <p className="text-3xl font-extrabold text-white">{datasets.length}</p>
           <p className="text-xs text-slate-500">Saved in SQLite database</p>
@@ -80,10 +105,23 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         <div className="glass-card p-5 rounded-2xl space-y-2">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-semibold uppercase tracking-wider">AutoML Pipeline</span>
-            <BrainCircuit className="w-4 h-4 text-purple-400" />
+            <BrainCircuit className="w-4 h-4 text-red-400" />
           </div>
-          <p className="text-xl font-bold text-purple-300">Ready</p>
+          <p className="text-xl font-bold text-red-300">Ready</p>
           <p className="text-xs text-slate-500">Classification & Regression</p>
+        </div>
+
+        <div className="glass-card p-5 rounded-2xl space-y-2">
+          <div className="flex items-center justify-between text-slate-400">
+            <span className="text-xs font-semibold uppercase tracking-wider">Search</span>
+            <Search className="w-4 h-4 text-emerald-400" />
+          </div>
+          <input
+            value={searchQuery}
+            onChange={(e) => onSearchQueryChange(e.target.value)}
+            placeholder="Filter datasets..."
+            className="w-full bg-emerald-950/70 border border-emerald-900 rounded-xl px-3 py-2 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
+          />
         </div>
       </div>
 
@@ -98,7 +136,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             }`}
           >
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400">
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400">
                 <BarChart3 className="w-5 h-5" />
               </div>
               <div>
@@ -134,7 +172,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             }`}
           >
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400">
+              <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400">
                 <BrainCircuit className="w-5 h-5" />
               </div>
               <div>
@@ -150,18 +188,22 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       {/* Datasets Table */}
       <div className="glass-panel p-6 rounded-2xl space-y-4">
         <h2 className="text-lg font-bold text-white">Recent Datasets</h2>
-        {datasets.length === 0 ? (
+        {filteredDatasets.length === 0 ? (
           <div className="text-center py-8 text-slate-500 space-y-2">
-            <p>No datasets uploaded yet.</p>
+            <p>{datasets.length === 0 ? 'No datasets uploaded yet.' : 'No datasets match your search.'}</p>
             <button
               onClick={onUploadClick}
-              className="text-xs text-indigo-400 hover:underline font-semibold"
+              className="text-xs text-emerald-400 hover:underline font-semibold"
             >
               Upload your first dataset
             </button>
           </div>
         ) : (
           <div className="overflow-x-auto">
+            <div className="flex items-center justify-between pb-3 text-xs text-slate-500">
+              <span>{filteredDatasets.length} dataset{filteredDatasets.length === 1 ? '' : 's'} shown</span>
+              {searchQuery && <span>Filtered by "{searchQuery}"</span>}
+            </div>
             <table className="w-full text-left text-sm text-slate-300">
               <thead className="text-xs uppercase bg-slate-800/60 text-slate-400 border-b border-slate-700">
                 <tr>
@@ -173,12 +215,12 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800">
-                {datasets.map((d) => {
+                {filteredDatasets.map((d) => {
                   const isSelected = activeDataset?.id === d.id;
                   return (
                     <tr key={d.id} className="hover:bg-slate-800/40 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-white flex items-center space-x-2">
-                        <FileSpreadsheet className="w-4 h-4 text-indigo-400" />
+                        <FileSpreadsheet className="w-4 h-4 text-emerald-400" />
                         <span>{d.filename}</span>
                       </td>
                       <td className="py-3.5 px-4 uppercase text-xs font-bold text-slate-400">{d.file_type}</td>
@@ -192,7 +234,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                           className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all ${
                             isSelected
                               ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                              : 'bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30'
+                              : 'bg-emerald-600/20 hover:bg-red-600/30 text-emerald-300 border border-emerald-500/30'
                           }`}
                         >
                           {isSelected ? 'Active' : 'Select'}

@@ -52,7 +52,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({ dataset }) => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white flex items-center space-x-2">
-            <FileText className="w-6 h-6 text-indigo-400" />
+            <FileText className="w-6 h-6 text-emerald-400" />
             <span>Executive Business Report Generator</span>
           </h1>
           <p className="text-slate-400 text-sm">Automated end-to-end analytical summary, health metrics, and recommendations.</p>
@@ -61,7 +61,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({ dataset }) => {
         <div className="flex items-center space-x-3">
           <button
             onClick={handleCopy}
-            className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs border border-slate-700 transition-colors"
+            className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-emerald-950/70 hover:bg-emerald-900/70 text-white font-medium text-xs border border-emerald-900 transition-colors"
           >
             {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
             <span>{copied ? 'Copied!' : 'Copy Markdown'}</span>
@@ -69,7 +69,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({ dataset }) => {
 
           <button
             onClick={handleDownloadMarkdown}
-            className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs transition-colors shadow-md shadow-indigo-600/30"
+            className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-medium text-xs transition-colors shadow-md shadow-emerald-600/30"
           >
             <Download className="w-4 h-4" />
             <span>Download Report (.md)</span>
@@ -80,7 +80,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({ dataset }) => {
       <div className="glass-panel p-8 rounded-2xl">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 text-slate-400 space-y-2">
-            <Loader2 className="w-8 h-8 text-indigo-400 animate-spin" />
+            <Loader2 className="w-8 h-8 text-emerald-400 animate-spin" />
             <span className="text-xs">Generating Comprehensive Executive Report...</span>
           </div>
         ) : (

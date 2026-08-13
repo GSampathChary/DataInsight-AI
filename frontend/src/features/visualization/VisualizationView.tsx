@@ -25,7 +25,7 @@ interface VisualizationViewProps {
   dataset: Dataset;
 }
 
-const COLORS = ['#6366f1', '#10b981', '#3b82f6', '#f59e0b', '#ec4899', '#8b5cf6', '#06b6d4'];
+const COLORS = ['#22c55e', '#ef4444', '#84cc16', '#16a34a', '#dc2626', '#4ade80', '#f43f5e'];
 
 export const VisualizationView: React.FC<VisualizationViewProps> = ({ dataset }) => {
   const [chartType, setChartType] = useState('histogram');
@@ -101,8 +101,8 @@ export const VisualizationView: React.FC<VisualizationViewProps> = ({ dataset })
                 onClick={() => setChartType(type.id)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
                   isActive
-                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                    : 'bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 border border-slate-700'
+                    ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30'
+                    : 'bg-emerald-950/70 hover:bg-emerald-900/70 text-slate-300 border border-emerald-900'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -118,7 +118,7 @@ export const VisualizationView: React.FC<VisualizationViewProps> = ({ dataset })
             <select
               value={colX}
               onChange={(e) => setColX(e.target.value)}
-              className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-indigo-500"
+              className="w-full bg-emerald-950/70 border border-emerald-900 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-emerald-500"
             >
               {columns.map((c) => (
                 <option key={c} value={c}>{c}</option>
@@ -132,7 +132,7 @@ export const VisualizationView: React.FC<VisualizationViewProps> = ({ dataset })
               <select
                 value={colY}
                 onChange={(e) => setColY(e.target.value)}
-                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-indigo-500"
+              className="w-full bg-emerald-950/70 border border-emerald-900 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-emerald-500"
               >
                 {columns.map((c) => (
                   <option key={c} value={c}>{c}</option>
@@ -147,7 +147,7 @@ export const VisualizationView: React.FC<VisualizationViewProps> = ({ dataset })
       <div className="glass-panel p-6 rounded-2xl min-h-[420px] flex items-center justify-center">
         {loading ? (
           <div className="flex flex-col items-center space-y-2 text-slate-400">
-            <Loader2 className="w-8 h-8 text-indigo-400 animate-spin" />
+            <Loader2 className="w-8 h-8 text-emerald-400 animate-spin" />
             <span className="text-xs">Rendering Chart...</span>
           </div>
         ) : chartData.length === 0 ? (
@@ -157,35 +157,35 @@ export const VisualizationView: React.FC<VisualizationViewProps> = ({ dataset })
             <ResponsiveContainer width="100%" height="100%">
               {chartType === 'histogram' ? (
                 <BarChart data={chartData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#173124" />
                   <XAxis dataKey="bin" stroke="#94a3b8" fontSize={11} />
                   <YAxis stroke="#94a3b8" fontSize={11} />
-                  <Tooltip contentStyle={{ backgroundColor: '#111827', borderColor: '#1e293b', borderRadius: '8px', color: '#fff' }} />
-                  <Bar dataKey="count" fill="#6366f1" radius={[4, 4, 0, 0]} />
+                  <Tooltip contentStyle={{ backgroundColor: '#0c1712', borderColor: '#173124', borderRadius: '8px', color: '#fff' }} />
+                  <Bar dataKey="count" fill="#22c55e" radius={[4, 4, 0, 0]} />
                 </BarChart>
               ) : chartType === 'bar' ? (
                 <BarChart data={chartData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#173124" />
                   <XAxis dataKey="name" stroke="#94a3b8" fontSize={11} />
                   <YAxis stroke="#94a3b8" fontSize={11} />
-                  <Tooltip contentStyle={{ backgroundColor: '#111827', borderColor: '#1e293b', borderRadius: '8px', color: '#fff' }} />
-                  <Bar dataKey="value" fill="#10b981" radius={[4, 4, 0, 0]} />
+                  <Tooltip contentStyle={{ backgroundColor: '#0c1712', borderColor: '#173124', borderRadius: '8px', color: '#fff' }} />
+                  <Bar dataKey="value" fill="#ef4444" radius={[4, 4, 0, 0]} />
                 </BarChart>
               ) : chartType === 'line' ? (
                 <LineChart data={chartData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#173124" />
                   <XAxis dataKey="index" stroke="#94a3b8" fontSize={11} />
                   <YAxis stroke="#94a3b8" fontSize={11} />
-                  <Tooltip contentStyle={{ backgroundColor: '#111827', borderColor: '#1e293b', borderRadius: '8px', color: '#fff' }} />
-                  <Line type="monotone" dataKey="y" stroke="#ec4899" strokeWidth={2} dot={false} />
+                  <Tooltip contentStyle={{ backgroundColor: '#0c1712', borderColor: '#173124', borderRadius: '8px', color: '#fff' }} />
+                  <Line type="monotone" dataKey="y" stroke="#22c55e" strokeWidth={2} dot={false} />
                 </LineChart>
               ) : chartType === 'scatter' ? (
                 <ScatterChart>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#173124" />
                   <XAxis dataKey="x" name={colX} stroke="#94a3b8" fontSize={11} />
                   <YAxis dataKey="y" name={colY} stroke="#94a3b8" fontSize={11} />
-                  <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{ backgroundColor: '#111827', borderColor: '#1e293b', borderRadius: '8px', color: '#fff' }} />
-                  <Scatter data={chartData} fill="#3b82f6" />
+                  <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{ backgroundColor: '#0c1712', borderColor: '#173124', borderRadius: '8px', color: '#fff' }} />
+                  <Scatter data={chartData} fill="#ef4444" />
                 </ScatterChart>
               ) : (
                 <PieChart>
@@ -202,7 +202,7 @@ export const VisualizationView: React.FC<VisualizationViewProps> = ({ dataset })
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
-                  <Tooltip contentStyle={{ backgroundColor: '#111827', borderColor: '#1e293b', borderRadius: '8px', color: '#fff' }} />
+                  <Tooltip contentStyle={{ backgroundColor: '#0c1712', borderColor: '#173124', borderRadius: '8px', color: '#fff' }} />
                   <Legend />
                 </PieChart>
               )}

@@ -70,7 +70,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange, hasDat
   ];
 
   return (
-    <aside className="w-60 border-r border-slate-800/80 bg-[#0c121e] flex flex-col justify-between py-4 px-3 select-none text-xs">
+    <aside className="w-60 border-r border-emerald-900/80 bg-[#0a1510] flex flex-col justify-between py-4 px-3 select-none text-xs">
       <div className="space-y-5">
         {sections.map((section, idx) => (
           <div key={idx} className="space-y-1">
@@ -90,10 +90,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange, hasDat
                   disabled={isDisabled}
                   className={`w-full flex items-center justify-between px-3 py-2 rounded-lg font-medium transition-colors ${
                     isActive
-                      ? 'bg-indigo-600 text-white font-semibold shadow-sm'
+                      ? 'bg-emerald-600 text-white font-semibold shadow-sm'
                       : isDisabled
                       ? 'opacity-30 cursor-not-allowed text-slate-500'
-                      : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                      : 'text-slate-400 hover:text-slate-200 hover:bg-emerald-950/50'
                   }`}
                 >
                   <div className="flex items-center space-x-2.5">
@@ -103,7 +103,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange, hasDat
 
                   {item.badge && (
                     <span className={`text-[9px] font-mono px-1.5 py-0.2 rounded ${
-                      isActive ? 'bg-white/20 text-white' : 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/30'
+                      isActive ? 'bg-white/20 text-white' : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
                     }`}>
                       {item.badge}
                     </span>
@@ -115,8 +115,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, onTabChange, hasDat
         ))}
       </div>
 
-      <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-[11px] text-slate-400 space-y-1 font-mono">
-        <p className="text-slate-300 font-semibold">FastAPI + Next.js</p>
+      <div className="p-3 rounded-lg bg-emerald-950/60 border border-emerald-900 text-[11px] text-slate-400 space-y-1 font-mono">
+        <p className="text-emerald-200 font-semibold">FastAPI + Next.js</p>
         <p className="text-[10px] text-slate-500">Built for Data Science Portfolio</p>
       </div>
     </aside>

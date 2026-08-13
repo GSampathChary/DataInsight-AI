@@ -41,7 +41,7 @@ export const EDAView: React.FC<EDAViewProps> = ({ dataset }) => {
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center py-20 space-y-3">
-        <Loader2 className="w-8 h-8 text-indigo-400 animate-spin" />
+        <Loader2 className="w-8 h-8 text-emerald-400 animate-spin" />
         <p className="text-sm text-slate-400">Performing Exploratory Data Analysis & Statistical Calculations...</p>
       </div>
     );
@@ -89,7 +89,7 @@ export const EDAView: React.FC<EDAViewProps> = ({ dataset }) => {
 
         <div className="glass-card p-5 rounded-2xl space-y-2">
           <span className="text-xs font-semibold text-slate-400 uppercase">Numeric Columns</span>
-          <p className="text-3xl font-bold text-indigo-400">{summary.numeric_columns_count}</p>
+          <p className="text-3xl font-bold text-emerald-400">{summary.numeric_columns_count}</p>
           <p className="text-xs text-slate-400">Out of {summary.columns} total</p>
         </div>
       </div>
@@ -97,7 +97,7 @@ export const EDAView: React.FC<EDAViewProps> = ({ dataset }) => {
       {/* Descriptive Statistics Table */}
       <div className="glass-panel p-6 rounded-2xl space-y-4">
         <h2 className="text-lg font-bold text-white flex items-center space-x-2">
-          <Sliders className="w-5 h-5 text-indigo-400" />
+          <Sliders className="w-5 h-5 text-emerald-400" />
           <span>Summary Descriptive Statistics</span>
         </h2>
 

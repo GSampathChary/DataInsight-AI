@@ -72,8 +72,8 @@ export const AIInsightsView: React.FC<AIInsightsViewProps> = ({ dataset }) => {
         </div>
 
         {/* API Key Optional Input */}
-        <div className="flex items-center space-x-2 glass-card px-3 py-1.5 rounded-xl border border-slate-700">
-          <Key className="w-4 h-4 text-amber-400" />
+        <div className="flex items-center space-x-2 glass-card px-3 py-1.5 rounded-xl border border-emerald-900">
+          <Key className="w-4 h-4 text-red-400" />
           <input
             type="password"
             placeholder="Gemini API Key (Optional)"
@@ -100,8 +100,8 @@ export const AIInsightsView: React.FC<AIInsightsViewProps> = ({ dataset }) => {
               onClick={() => setPromptType(tab.id)}
               className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                 isActive
-                  ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md shadow-emerald-600/30'
-                  : 'bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 border border-slate-700'
+                  ? 'bg-gradient-to-r from-emerald-600 to-red-600 text-white shadow-md shadow-emerald-600/30'
+                  : 'bg-emerald-950/70 hover:bg-emerald-900/70 text-slate-300 border border-emerald-900'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -113,13 +113,13 @@ export const AIInsightsView: React.FC<AIInsightsViewProps> = ({ dataset }) => {
 
       {/* AI Insight Content Display Card */}
       <div className="glass-panel p-6 rounded-2xl space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="flex items-center justify-between border-b border-emerald-900 pb-3">
           <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
             {promptType.replace('_', ' ')}
           </span>
 
           <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-            usedGemini ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-slate-800 text-slate-400 border border-slate-700'
+            usedGemini ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-emerald-950 text-slate-400 border border-emerald-900'
           }`}>
             {usedGemini ? 'Live Gemini 2.5 Output' : 'Static Analytical Engine'}
           </span>
@@ -140,7 +140,7 @@ export const AIInsightsView: React.FC<AIInsightsViewProps> = ({ dataset }) => {
       {/* Dataset Q&A AI Assistant */}
       <div className="glass-panel p-6 rounded-2xl space-y-4">
         <h2 className="text-lg font-bold text-white flex items-center space-x-2">
-          <Sparkles className="w-5 h-5 text-indigo-400" />
+          <Sparkles className="w-5 h-5 text-emerald-400" />
           <span>Ask Questions about Dataset</span>
         </h2>
 
@@ -148,10 +148,10 @@ export const AIInsightsView: React.FC<AIInsightsViewProps> = ({ dataset }) => {
           <div className="space-y-3 max-h-60 overflow-y-auto pr-2">
             {chatHistory.map((item, idx) => (
               <div key={idx} className="space-y-1.5 text-xs">
-                <div className="p-2.5 rounded-xl bg-slate-800 text-indigo-300 font-semibold">
+                <div className="p-2.5 rounded-xl bg-emerald-950/70 text-emerald-300 font-semibold">
                   Q: {item.q}
                 </div>
-                <div className="p-3 rounded-xl bg-slate-900/80 text-slate-200 whitespace-pre-line border border-slate-800">
+                <div className="p-3 rounded-xl bg-emerald-950/80 text-slate-200 whitespace-pre-line border border-emerald-900">
                   {item.a}
                 </div>
               </div>
@@ -165,12 +165,12 @@ export const AIInsightsView: React.FC<AIInsightsViewProps> = ({ dataset }) => {
             placeholder="Ask a question about this dataset (e.g. Which columns have high correlation?)"
             value={customQuestion}
             onChange={(e) => setCustomQuestion(e.target.value)}
-            className="flex-1 bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+            className="flex-1 bg-emerald-950/70 border border-emerald-900 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
           />
           <button
             type="submit"
             disabled={loading}
-            className="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-all shadow-md shadow-indigo-600/30"
+            className="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-semibold text-sm transition-all shadow-md shadow-emerald-600/30"
           >
             <Send className="w-4 h-4" />
             <span>Ask</span>

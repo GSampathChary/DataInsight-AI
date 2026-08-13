@@ -73,7 +73,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({ dataset, onRefreshDa
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="w-8 h-8 text-indigo-400 animate-spin" />
+        <Loader2 className="w-8 h-8 text-emerald-400 animate-spin" />
       </div>
     );
   }
@@ -97,7 +97,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({ dataset, onRefreshDa
         </div>
         <div className="glass-card p-4 rounded-xl space-y-1">
           <span className="text-xs text-slate-400 font-semibold">Format</span>
-          <p className="text-2xl font-bold text-indigo-400 uppercase">{dataset.file_type}</p>
+          <p className="text-2xl font-bold text-emerald-400 uppercase">{dataset.file_type}</p>
         </div>
         <div className="glass-card p-4 rounded-xl space-y-1">
           <span className="text-xs text-slate-400 font-semibold">File Size</span>
@@ -108,7 +108,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({ dataset, onRefreshDa
       {/* Preprocessing & Cleaning Controls */}
       <div className="glass-panel p-6 rounded-2xl space-y-6">
         <div className="flex items-center space-x-2">
-          <Layers className="w-5 h-5 text-indigo-400" />
+          <Layers className="w-5 h-5 text-emerald-400" />
           <h2 className="text-lg font-bold text-white">Automated Data Preprocessing Studio</h2>
         </div>
 
@@ -119,7 +119,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({ dataset, onRefreshDa
             <select
               value={missingStrategy}
               onChange={(e) => setMissingStrategy(e.target.value)}
-              className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-indigo-500"
+              className="w-full bg-emerald-950/70 border border-emerald-900 rounded-xl px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-emerald-500"
             >
               <option value="drop">Drop Rows with Missing Values</option>
               <option value="mean">Impute Mean (Numeric)</option>
@@ -138,7 +138,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({ dataset, onRefreshDa
                 id="dup"
                 checked={removeDuplicates}
                 onChange={(e) => setRemoveDuplicates(e.target.checked)}
-                className="w-4 h-4 rounded bg-slate-800 border-slate-700 text-indigo-600 focus:ring-indigo-500"
+                className="w-4 h-4 rounded bg-emerald-950 border-emerald-900 text-emerald-600 focus:ring-emerald-500"
               />
               <label htmlFor="dup" className="text-sm text-slate-300">Remove Duplicate Rows automatically</label>
             </div>
@@ -149,7 +149,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({ dataset, onRefreshDa
             <button
               onClick={handleApplyClean}
               disabled={isCleaning}
-              className="w-full flex items-center justify-center space-x-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white font-semibold text-sm transition-all shadow-md shadow-indigo-600/30"
+              className="w-full flex items-center justify-center space-x-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-red-600 hover:from-emerald-500 hover:to-red-500 text-white font-semibold text-sm transition-all shadow-md shadow-emerald-600/30"
             >
               {isCleaning ? (
                 <>

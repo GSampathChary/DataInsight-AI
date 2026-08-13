@@ -16,22 +16,87 @@ import { SettingsView } from '@/features/settings/SettingsView';
 import { AboutView } from '@/features/about/AboutView';
 import { api, Dataset } from '@/lib/api';
 
+type BackendHealth = 'checking' | 'online' | 'offline';
+const VALID_TABS: TabType[] = [
+  'landing',
+  'dashboard',
+  'upload',
+  'overview',
+  'eda',
+  'visualizations',
+  'insights',
+  'ml_studio',
+  'reports',
+  'settings',
+  'about',
+];
+
+const ACTIVE_TAB_STORAGE_KEY = 'datainsight.activeTab';
+const ACTIVE_DATASET_STORAGE_KEY = 'datainsight.activeDatasetId';
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabType>('landing');
   const [datasets, setDatasets] = useState<Dataset[]>([]);
   const [activeDataset, setActiveDataset] = useState<Dataset | null>(null);
+  const [backendHealth, setBackendHealth] = useState<BackendHealth>('checking');
+  const [dashboardSearch, setDashboardSearch] = useState('');
 
   useEffect(() => {
-    fetchDatasets();
+    const savedTab = window.localStorage.getItem(ACTIVE_TAB_STORAGE_KEY);
+    const savedDatasetId = window.localStorage.getItem(ACTIVE_DATASET_STORAGE_KEY);
+
+    if (savedTab && VALID_TABS.includes(savedTab as TabType)) {
+      setActiveTab(savedTab as TabType);
+    }
+
+    fetchDatasets(savedDatasetId);
+    fetchBackendHealth();
+
+    const interval = window.setInterval(fetchBackendHealth, 30000);
+    return () => window.clearInterval(interval);
   }, []);
 
-  const fetchDatasets = async () => {
+  useEffect(() => {
+    window.localStorage.setItem(ACTIVE_TAB_STORAGE_KEY, activeTab);
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (activeDataset?.id) {
+      window.localStorage.setItem(ACTIVE_DATASET_STORAGE_KEY, activeDataset.id);
+    } else {
+      window.localStorage.removeItem(ACTIVE_DATASET_STORAGE_KEY);
+    }
+  }, [activeDataset]);
+
+  const fetchBackendHealth = async () => {
+    try {
+      const res = await api.get('/health');
+      setBackendHealth(res.data?.status === 'online' ? 'online' : 'offline');
+    } catch (err) {
+      setBackendHealth('offline');
+    }
+  };
+
+  const fetchDatasets = async (preferredDatasetId?: string | null) => {
     try {
       const res = await api.get('/datasets');
       const list = res.data.data || [];
       setDatasets(list);
+
+      if (preferredDatasetId) {
+        const preferred = list.find((d: Dataset) => d.id === preferredDatasetId);
+        if (preferred) {
+          setActiveDataset(preferred);
+          return;
+        }
+      }
+
       if (list.length > 0 && !activeDataset) {
         setActiveDataset(list[0]);
+      }
+
+      if (list.length === 0) {
+        setActiveDataset(null);
       }
     } catch (err) {
       console.error('API Server unavailable or starting up...', err);
@@ -55,6 +120,7 @@ export default function Home() {
       <Navbar
         activeDataset={activeDataset}
         onSelectDatasetClick={() => setActiveTab('upload')}
+        backendHealth={backendHealth}
       />
 
       {/* Main Workspace Layout */}
@@ -73,12 +139,15 @@ export default function Home() {
           )}
 
           {activeTab === 'dashboard' && (
-            <DashboardView
+          <DashboardView
               datasets={datasets}
               activeDataset={activeDataset}
               onSelectDataset={handleSelectDataset}
               onUploadClick={() => setActiveTab('upload')}
               onNavigateTab={(tab) => setActiveTab(tab)}
+              backendHealth={backendHealth}
+              searchQuery={dashboardSearch}
+              onSearchQueryChange={setDashboardSearch}
             />
           )}
 

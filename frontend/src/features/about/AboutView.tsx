@@ -8,7 +8,7 @@ export const AboutView: React.FC = () => {
     <div className="space-y-8 max-w-4xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold text-white flex items-center space-x-2">
-          <Info className="w-6 h-6 text-indigo-400" />
+          <Info className="w-6 h-6 text-emerald-400" />
           <span>About DataInsight AI</span>
         </h1>
         <p className="text-slate-400 text-sm">AI-Powered Data Analytics, Business Intelligence & AutoML Platform.</p>
@@ -26,7 +26,7 @@ export const AboutView: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
           <div className="glass-card p-4 rounded-xl space-y-2">
-            <div className="flex items-center space-x-2 text-indigo-400 font-bold text-sm">
+            <div className="flex items-center space-x-2 text-emerald-400 font-bold text-sm">
               <Code className="w-4 h-4" />
               <span>Frontend Stack</span>
             </div>
@@ -48,7 +48,7 @@ export const AboutView: React.FC = () => {
 
         <div className="pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
           <span>Version: 1.0.0 (Production Release)</span>
-          <span className="text-indigo-400 font-medium">Built for Portfolio Showcase</span>
+          <span className="text-emerald-400 font-medium">Built for Portfolio Showcase</span>
         </div>
       </div>
     </div>
