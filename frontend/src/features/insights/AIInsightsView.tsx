@@ -61,9 +61,9 @@ export const AIInsightsView: React.FC<AIInsightsViewProps> = ({ dataset }) => {
   };
 
   return (
-    <div className="space-y-8 max-w-5xl mx-auto">
+    <div className="space-y-6 md:space-y-8 max-w-5xl mx-auto">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
+        <div className="min-w-0">
           <h1 className="text-2xl font-bold text-white flex items-center space-x-2">
             <Sparkles className="w-6 h-6 text-emerald-400" />
             <span>AI Executive Insights & Intelligence</span>
@@ -72,14 +72,14 @@ export const AIInsightsView: React.FC<AIInsightsViewProps> = ({ dataset }) => {
         </div>
 
         {/* API Key Optional Input */}
-        <div className="flex items-center space-x-2 glass-card px-3 py-1.5 rounded-xl border border-emerald-900">
+        <div className="flex items-center space-x-2 glass-card px-3 py-1.5 rounded-xl border border-emerald-900 w-full sm:w-auto">
           <Key className="w-4 h-4 text-red-400" />
           <input
             type="password"
             placeholder="Gemini API Key (Optional)"
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
-            className="bg-transparent text-xs text-white placeholder-slate-500 focus:outline-none w-44"
+            className="bg-transparent text-xs text-white placeholder-slate-500 focus:outline-none w-full sm:w-44 min-w-0"
           />
         </div>
       </div>
@@ -159,18 +159,18 @@ export const AIInsightsView: React.FC<AIInsightsViewProps> = ({ dataset }) => {
           </div>
         )}
 
-        <form onSubmit={handleAskQuestion} className="flex space-x-2">
+        <form onSubmit={handleAskQuestion} className="flex flex-col sm:flex-row gap-2">
           <input
             type="text"
             placeholder="Ask a question about this dataset (e.g. Which columns have high correlation?)"
             value={customQuestion}
             onChange={(e) => setCustomQuestion(e.target.value)}
-            className="flex-1 bg-emerald-950/70 border border-emerald-900 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
+            className="flex-1 bg-emerald-950/70 border border-emerald-900 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 min-w-0"
           />
           <button
             type="submit"
             disabled={loading}
-            className="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-semibold text-sm transition-all shadow-md shadow-emerald-600/30"
+            className="flex items-center justify-center space-x-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-semibold text-sm transition-all shadow-md shadow-emerald-600/30 w-full sm:w-auto"
           >
             <Send className="w-4 h-4" />
             <span>Ask</span>

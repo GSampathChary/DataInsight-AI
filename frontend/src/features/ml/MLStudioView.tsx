@@ -63,7 +63,7 @@ export const MLStudioView: React.FC<MLStudioViewProps> = ({ dataset }) => {
   };
 
   return (
-    <div className="space-y-8 max-w-5xl mx-auto">
+    <div className="space-y-6 md:space-y-8 max-w-5xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold text-white flex items-center space-x-2">
           <BrainCircuit className="w-6 h-6 text-red-400" />
@@ -73,8 +73,8 @@ export const MLStudioView: React.FC<MLStudioViewProps> = ({ dataset }) => {
       </div>
 
       {/* Model Configuration Form */}
-      <div className="glass-panel p-6 rounded-2xl space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           <div className="space-y-1.5">
             <label className="text-xs font-semibold text-slate-300 flex items-center space-x-1.5">
               <Target className="w-4 h-4 text-red-400" />
@@ -139,7 +139,7 @@ export const MLStudioView: React.FC<MLStudioViewProps> = ({ dataset }) => {
       {result && (
         <div className="space-y-6">
           {/* Best Model Banner */}
-          <div className="glass-card p-6 rounded-2xl border border-emerald-500/30 bg-gradient-to-r from-emerald-950/40 via-red-950/30 to-slate-900 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="glass-card p-5 sm:p-6 rounded-2xl border border-emerald-500/30 bg-gradient-to-r from-emerald-950/40 via-red-950/30 to-slate-900 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="space-y-1">
               <div className="flex items-center space-x-2 text-amber-400 text-xs font-bold uppercase">
                 <Trophy className="w-4 h-4" />
@@ -153,7 +153,7 @@ export const MLStudioView: React.FC<MLStudioViewProps> = ({ dataset }) => {
 
             <button
               onClick={() => handleDownloadModel(result.best_model.model_id)}
-              className="flex items-center space-x-2 px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-red-600 hover:from-emerald-500 hover:to-red-500 text-white font-bold text-sm shadow-lg shadow-emerald-600/30 transition-all"
+              className="flex items-center justify-center space-x-2 px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-red-600 hover:from-emerald-500 hover:to-red-500 text-white font-bold text-sm shadow-lg shadow-emerald-600/30 transition-all w-full md:w-auto"
             >
               <Download className="w-5 h-5" />
               <span>Download Model (.joblib)</span>
@@ -161,7 +161,7 @@ export const MLStudioView: React.FC<MLStudioViewProps> = ({ dataset }) => {
           </div>
 
           {/* Model Comparison Table */}
-          <div className="glass-panel p-6 rounded-2xl space-y-4">
+          <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-4">
             <h2 className="text-lg font-bold text-white">Algorithm Accuracy & Performance Comparison</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs text-slate-300">

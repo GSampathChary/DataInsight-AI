@@ -41,15 +41,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   });
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 md:space-y-8">
       {/* Top Welcome Header */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
+        <div className="min-w-0">
           <h1 className="text-2xl font-bold text-white">Platform Dashboard</h1>
           <p className="text-slate-400 text-sm">Overview of your workspace, datasets, and recent analytical operations.</p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
           <div className={`flex items-center space-x-2 px-3 py-2 rounded-xl border text-xs font-semibold ${
             backendHealth === 'online'
               ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20'
@@ -63,7 +63,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
           <button
             onClick={onUploadClick}
-            className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-medium text-sm transition-all shadow-md shadow-emerald-600/20"
+            className="flex items-center justify-center space-x-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-medium text-sm transition-all shadow-md shadow-emerald-600/20 w-full sm:w-auto"
           >
             <FileSpreadsheet className="w-4 h-4" />
             <span>Upload New Dataset</span>
@@ -72,7 +72,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       </div>
 
       {/* Overview Stat Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4">
         <div className="glass-card p-5 rounded-2xl space-y-2">
           <div className="flex items-center justify-between text-slate-400">
             <span className="text-xs font-semibold uppercase tracking-wider">Total Datasets</span>
@@ -129,9 +129,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       <div className="space-y-4">
         <h2 className="text-lg font-bold text-white">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div 
+          <div
             onClick={() => activeDataset && onNavigateTab('eda')}
-            className={`glass-card p-5 rounded-2xl flex items-center justify-between cursor-pointer ${
+            className={`glass-card p-5 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 cursor-pointer ${
               !activeDataset ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
@@ -147,9 +147,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <ArrowUpRight className="w-4 h-4 text-slate-400" />
           </div>
 
-          <div 
+          <div
             onClick={() => activeDataset && onNavigateTab('insights')}
-            className={`glass-card p-5 rounded-2xl flex items-center justify-between cursor-pointer ${
+            className={`glass-card p-5 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 cursor-pointer ${
               !activeDataset ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
@@ -165,9 +165,9 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <ArrowUpRight className="w-4 h-4 text-slate-400" />
           </div>
 
-          <div 
+          <div
             onClick={() => activeDataset && onNavigateTab('ml_studio')}
-            className={`glass-card p-5 rounded-2xl flex items-center justify-between cursor-pointer ${
+            className={`glass-card p-5 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 cursor-pointer ${
               !activeDataset ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
@@ -186,7 +186,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       </div>
 
       {/* Datasets Table */}
-      <div className="glass-panel p-6 rounded-2xl space-y-4">
+      <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-4">
         <h2 className="text-lg font-bold text-white">Recent Datasets</h2>
         {filteredDatasets.length === 0 ? (
           <div className="text-center py-8 text-slate-500 space-y-2">
@@ -200,7 +200,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <div className="flex items-center justify-between pb-3 text-xs text-slate-500">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 text-xs text-slate-500">
               <span>{filteredDatasets.length} dataset{filteredDatasets.length === 1 ? '' : 's'} shown</span>
               {searchQuery && <span>Filtered by "{searchQuery}"</span>}
             </div>

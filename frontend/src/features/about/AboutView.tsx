@@ -5,7 +5,7 @@ import { Info, Code, Layers, Cpu, Github, ExternalLink } from 'lucide-react';
 
 export const AboutView: React.FC = () => {
   return (
-    <div className="space-y-8 max-w-4xl mx-auto">
+    <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold text-white flex items-center space-x-2">
           <Info className="w-6 h-6 text-emerald-400" />
@@ -14,7 +14,7 @@ export const AboutView: React.FC = () => {
         <p className="text-slate-400 text-sm">AI-Powered Data Analytics, Business Intelligence & AutoML Platform.</p>
       </div>
 
-      <div className="glass-panel p-6 rounded-2xl space-y-6">
+      <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-6">
         <div className="space-y-3">
           <h2 className="text-lg font-bold text-white">Project Vision & Architecture</h2>
           <p className="text-slate-300 text-sm leading-relaxed">
@@ -46,7 +46,7 @@ export const AboutView: React.FC = () => {
           </div>
         </div>
 
-        <div className="pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+        <div className="pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-slate-400">
           <span>Version: 1.0.0 (Production Release)</span>
           <span className="text-emerald-400 font-medium">Built for Portfolio Showcase</span>
         </div>

@@ -58,14 +58,14 @@ export const EDAView: React.FC<EDAViewProps> = ({ dataset }) => {
   const { summary, descriptive_stats, correlation_matrix, outliers_summary } = eda;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 md:space-y-8">
       <div>
         <h1 className="text-2xl font-bold text-white">Exploratory Data Analysis (EDA)</h1>
         <p className="text-slate-400 text-sm">Comprehensive statistical profiling, distributions, skewness, kurtosis, and correlation metrics.</p>
       </div>
 
       {/* Dataset Health Score & Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         <div className="glass-card p-5 rounded-2xl space-y-2 border border-emerald-500/20">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-slate-400 uppercase">Data Health Score</span>
@@ -95,7 +95,7 @@ export const EDAView: React.FC<EDAViewProps> = ({ dataset }) => {
       </div>
 
       {/* Descriptive Statistics Table */}
-      <div className="glass-panel p-6 rounded-2xl space-y-4">
+      <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-4">
         <h2 className="text-lg font-bold text-white flex items-center space-x-2">
           <Sliders className="w-5 h-5 text-emerald-400" />
           <span>Summary Descriptive Statistics</span>
@@ -136,7 +136,7 @@ export const EDAView: React.FC<EDAViewProps> = ({ dataset }) => {
       </div>
 
       {/* Outliers Summary Table */}
-      <div className="glass-panel p-6 rounded-2xl space-y-4">
+      <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-4">
         <h2 className="text-lg font-bold text-white flex items-center space-x-2">
           <AlertTriangle className="w-5 h-5 text-amber-400" />
           <span>Outlier Detection Analysis (IQR Method)</span>

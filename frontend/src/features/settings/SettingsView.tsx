@@ -14,7 +14,7 @@ export const SettingsView: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8 max-w-4xl mx-auto">
+    <div className="space-y-6 md:space-y-8 max-w-4xl mx-auto">
       <div>
         <h1 className="text-2xl font-bold text-white flex items-center space-x-2">
           <Settings className="w-6 h-6 text-emerald-400" />
@@ -23,7 +23,7 @@ export const SettingsView: React.FC = () => {
         <p className="text-slate-400 text-sm">Configure AI Providers, API Keys, and Environment Preferences.</p>
       </div>
 
-      <div className="glass-panel p-6 rounded-2xl space-y-6">
+      <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-6">
         <form onSubmit={handleSave} className="space-y-6">
           <div className="space-y-2">
             <label className="text-sm font-semibold text-white flex items-center space-x-2">
@@ -57,7 +57,7 @@ export const SettingsView: React.FC = () => {
 
           <button
             type="submit"
-            className="flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-semibold text-sm transition-all shadow-md shadow-emerald-600/30"
+            className="flex items-center justify-center space-x-2 px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-semibold text-sm transition-all shadow-md shadow-emerald-600/30 w-full sm:w-auto"
           >
             {saved ? <Check className="w-4 h-4 text-emerald-400" /> : <Settings className="w-4 h-4" />}
             <span>{saved ? 'Settings Saved!' : 'Save Settings'}</span>

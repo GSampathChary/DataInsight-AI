@@ -57,14 +57,14 @@ export const UploadView: React.FC<UploadViewProps> = ({ onUploadSuccess }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
+    <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
       <div>
         <h1 className="text-2xl font-bold text-white">Upload Dataset</h1>
         <p className="text-slate-400 text-sm">Select a CSV or Excel file to begin automated data analysis and machine learning.</p>
       </div>
 
       {/* Drag & Drop Upload Zone */}
-      <div className="glass-panel rounded-2xl p-8 text-center space-y-4 border-2 border-dashed border-emerald-900 hover:border-emerald-500/50 transition-all">
+      <div className="glass-panel rounded-2xl p-5 sm:p-8 text-center space-y-4 border-2 border-dashed border-emerald-900 hover:border-emerald-500/50 transition-all">
         <div className="w-16 h-16 rounded-2xl bg-emerald-600/10 flex items-center justify-center mx-auto text-emerald-400">
           <UploadCloud className="w-8 h-8" />
         </div>
@@ -75,7 +75,7 @@ export const UploadView: React.FC<UploadViewProps> = ({ onUploadSuccess }) => {
         </div>
 
         <div className="pt-2">
-          <label className="cursor-pointer inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-emerald-950/70 hover:bg-emerald-900/70 text-white font-medium text-sm border border-emerald-900 transition-colors">
+          <label className="cursor-pointer inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-xl bg-emerald-950/70 hover:bg-emerald-900/70 text-white font-medium text-sm border border-emerald-900 transition-colors w-full sm:w-auto">
             <FileSpreadsheet className="w-4 h-4 text-emerald-400" />
             <span>Browse Computer</span>
             <input 
@@ -107,7 +107,7 @@ export const UploadView: React.FC<UploadViewProps> = ({ onUploadSuccess }) => {
             <button
               onClick={handleUpload}
               disabled={isUploading}
-              className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-semibold text-sm transition-all shadow-lg shadow-emerald-600/30"
+            className="inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-semibold text-sm transition-all shadow-lg shadow-emerald-600/30 w-full sm:w-auto"
             >
               {isUploading ? (
                 <>
@@ -127,8 +127,8 @@ export const UploadView: React.FC<UploadViewProps> = ({ onUploadSuccess }) => {
 
       {/* Dataset Preview (First 10 Rows) */}
       {previewData && (
-        <div className="glass-panel p-6 rounded-2xl space-y-4">
-          <div className="flex items-center justify-between">
+        <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div className="flex items-center space-x-2">
               <CheckCircle2 className="w-5 h-5 text-emerald-400" />
               <h2 className="text-lg font-bold text-white">First 10 Rows Preview</h2>

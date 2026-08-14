@@ -77,15 +77,15 @@ export const VisualizationView: React.FC<VisualizationViewProps> = ({ dataset })
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 md:space-y-8">
       <div>
         <h1 className="text-2xl font-bold text-white">Interactive Chart Studio</h1>
         <p className="text-slate-400 text-sm">Visualize column distributions, relationships, trends, and frequencies using Recharts.</p>
       </div>
 
       {/* Chart Selector & Controls */}
-      <div className="glass-panel p-6 rounded-2xl space-y-6">
-        <div className="flex flex-wrap gap-2">
+      <div className="glass-panel p-5 sm:p-6 rounded-2xl space-y-6">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2">
           {[
             { id: 'histogram', label: 'Histogram / Distribution', icon: BarChart2 },
             { id: 'bar', label: 'Bar Chart', icon: BarChart2 },
@@ -144,7 +144,7 @@ export const VisualizationView: React.FC<VisualizationViewProps> = ({ dataset })
       </div>
 
       {/* Chart Canvas */}
-      <div className="glass-panel p-6 rounded-2xl min-h-[420px] flex items-center justify-center">
+      <div className="glass-panel p-5 sm:p-6 rounded-2xl min-h-[320px] sm:min-h-[420px] flex items-center justify-center">
         {loading ? (
           <div className="flex flex-col items-center space-y-2 text-slate-400">
             <Loader2 className="w-8 h-8 text-emerald-400 animate-spin" />
@@ -153,7 +153,7 @@ export const VisualizationView: React.FC<VisualizationViewProps> = ({ dataset })
         ) : chartData.length === 0 ? (
           <p className="text-slate-500 text-sm">No valid chart data available for the selected variables.</p>
         ) : (
-          <div className="w-full h-[380px]">
+          <div className="w-full h-[300px] sm:h-[380px]">
             <ResponsiveContainer width="100%" height="100%">
               {chartType === 'histogram' ? (
                 <BarChart data={chartData}>

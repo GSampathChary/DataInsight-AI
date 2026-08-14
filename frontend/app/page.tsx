@@ -124,7 +124,7 @@ export default function Home() {
       />
 
       {/* Main Workspace Layout */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
         {/* Sidebar */}
         <Sidebar
           activeTab={activeTab}
@@ -133,7 +133,7 @@ export default function Home() {
         />
 
         {/* Main Content Viewport */}
-        <main className="flex-1 overflow-y-auto p-6 md:p-8">
+        <main className="flex-1 min-w-0 overflow-y-auto p-4 sm:p-5 md:p-8">
           {activeTab === 'landing' && (
             <LandingView onStartClick={() => setActiveTab('upload')} />
           )}

@@ -48,9 +48,9 @@ export const ReportsView: React.FC<ReportsViewProps> = ({ dataset }) => {
   };
 
   return (
-    <div className="space-y-8 max-w-5xl mx-auto">
+    <div className="space-y-6 md:space-y-8 max-w-5xl mx-auto">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
+        <div className="min-w-0">
           <h1 className="text-2xl font-bold text-white flex items-center space-x-2">
             <FileText className="w-6 h-6 text-emerald-400" />
             <span>Executive Business Report Generator</span>
@@ -58,10 +58,10 @@ export const ReportsView: React.FC<ReportsViewProps> = ({ dataset }) => {
           <p className="text-slate-400 text-sm">Automated end-to-end analytical summary, health metrics, and recommendations.</p>
         </div>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
           <button
             onClick={handleCopy}
-            className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-emerald-950/70 hover:bg-emerald-900/70 text-white font-medium text-xs border border-emerald-900 transition-colors"
+            className="flex items-center justify-center space-x-2 px-4 py-2 rounded-xl bg-emerald-950/70 hover:bg-emerald-900/70 text-white font-medium text-xs border border-emerald-900 transition-colors w-full sm:w-auto"
           >
             {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
             <span>{copied ? 'Copied!' : 'Copy Markdown'}</span>
@@ -69,7 +69,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({ dataset }) => {
 
           <button
             onClick={handleDownloadMarkdown}
-            className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-medium text-xs transition-colors shadow-md shadow-emerald-600/30"
+            className="flex items-center justify-center space-x-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-red-500 text-white font-medium text-xs transition-colors shadow-md shadow-emerald-600/30 w-full sm:w-auto"
           >
             <Download className="w-4 h-4" />
             <span>Download Report (.md)</span>
@@ -77,7 +77,7 @@ export const ReportsView: React.FC<ReportsViewProps> = ({ dataset }) => {
         </div>
       </div>
 
-      <div className="glass-panel p-8 rounded-2xl">
+      <div className="glass-panel p-5 sm:p-8 rounded-2xl">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 text-slate-400 space-y-2">
             <Loader2 className="w-8 h-8 text-emerald-400 animate-spin" />
