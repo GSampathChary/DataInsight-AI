@@ -33,6 +33,7 @@ const VALID_TABS: TabType[] = [
 
 const ACTIVE_TAB_STORAGE_KEY = 'datainsight.activeTab';
 const ACTIVE_DATASET_STORAGE_KEY = 'datainsight.activeDatasetId';
+const DASHBOARD_SEARCH_STORAGE_KEY = 'datainsight.dashboardSearch';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabType>('landing');
@@ -44,9 +45,14 @@ export default function Home() {
   useEffect(() => {
     const savedTab = window.localStorage.getItem(ACTIVE_TAB_STORAGE_KEY);
     const savedDatasetId = window.localStorage.getItem(ACTIVE_DATASET_STORAGE_KEY);
+    const savedSearchQuery = window.localStorage.getItem(DASHBOARD_SEARCH_STORAGE_KEY);
 
     if (savedTab && VALID_TABS.includes(savedTab as TabType)) {
       setActiveTab(savedTab as TabType);
+    }
+
+    if (savedSearchQuery) {
+      setDashboardSearch(savedSearchQuery);
     }
 
     fetchDatasets(savedDatasetId);
@@ -59,6 +65,14 @@ export default function Home() {
   useEffect(() => {
     window.localStorage.setItem(ACTIVE_TAB_STORAGE_KEY, activeTab);
   }, [activeTab]);
+
+  useEffect(() => {
+    if (dashboardSearch.trim()) {
+      window.localStorage.setItem(DASHBOARD_SEARCH_STORAGE_KEY, dashboardSearch);
+    } else {
+      window.localStorage.removeItem(DASHBOARD_SEARCH_STORAGE_KEY);
+    }
+  }, [dashboardSearch]);
 
   useEffect(() => {
     if (activeDataset?.id) {
